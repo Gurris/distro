@@ -14,9 +14,8 @@ public class DBConnection {
         try{
 
             Class.forName("com.mysql.jdbc.Driver");
-            //conn = DriverManager.getConnection("jdbc:mysql://localhost/myDB?autoReconnect=true&useSSL=false", "Gurris", "gurris");
-
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/distro", "root", "1234");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/myDB?autoReconnect=true&useSSL=false", "Gurris", "gurris");
+            //conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/distro", "root", "1234");
 
         }catch (Exception e){
             System.out.println("Exception from getConnection! " + e);

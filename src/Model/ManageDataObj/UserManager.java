@@ -2,15 +2,13 @@ package Model.ManageDataObj;
 
 import Model.DB.DBConnection;
 import Model.Entitys.User;
-
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Gurris on 2016-10-02.
  */
-public class UserManage {
+public class UserManager {
 
     public void createUser(User user){
         Connection conn = null;
@@ -65,6 +63,51 @@ public class UserManage {
         }catch (Exception e){
             e.printStackTrace();
             return null;
+        }finally {
+            if(stmt != null){
+                try {
+                    stmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(conn != null){
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(rs != null){
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+    }
+
+    public boolean AuthenticateUser(String Username, String Password){
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try{
+            conn = DBConnection.getConnection();
+            stmt = conn.prepareStatement("SELECT * from user where Username = ?;");
+            stmt.setString(1, Username);
+            rs = stmt.executeQuery();
+
+            while(rs.next()) {
+                if(rs.getString("Username").equals(Username) && rs.getString("Password").equals(Password)){
+                    return true;
+                }
+            }
+            return false;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
         }finally {
             if(stmt != null){
                 try {
@@ -196,7 +239,6 @@ public class UserManage {
                 }
             }
         }
-
 
     }
 

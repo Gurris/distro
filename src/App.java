@@ -1,7 +1,7 @@
-import Model.ManageDataObj.UserManage;
+import Model.ManageDataObj.ProductManager;
+import Model.ManageDataObj.UserManager;
 import Model.Entitys.*;
 
-import java.sql.Connection;
 import java.util.ArrayList;
 
 /**
@@ -11,11 +11,15 @@ public class App {
 
     public static void main(String[] args){
 
-        UserManage um = new UserManage();
+        //ArrayList<User> list = new ArrayList<User>();
+        //UserManager um = new UserManager();
+        //list = um.getUsers();
 
-        User gustaf = new User("Gurra", "Gustaf", "Holmström");
+        Product p = new Product("Ketchup", 50);
+        ProductManager pm = new ProductManager();
+        pm.createProduct(p);
 
-        um.createUser(gustaf);
+
     }
 
 }
