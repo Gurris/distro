@@ -17,7 +17,10 @@
 
   <div>
 
-    test:
+    <form action = "ControllerServlet" method="post">
+      <input type = "text" name="controllerInput" value=""/>
+
+    </form>
 
   </div>
 

@@ -5,13 +5,15 @@
          version="3.1">
 
     <servlet>
-        <servlet-name>userController</servlet-name>
-        <servlet-class>Controller.userController</servlet-class>
+        <servlet-name>ControllerServlet</servlet-name>
+        <servlet-class>Controller.ControllerServlet</servlet-class>
+
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>userController</servlet-name>
-        <url-pattern>/userController</url-pattern>
+        <servlet-name>ControllerServlet</servlet-name>
+        <url-pattern>/ControllerServlet</url-pattern>
+
     </servlet-mapping>
 
 </web-app>
