@@ -13,11 +13,9 @@ public class App {
 
         UserManage um = new UserManage();
 
-        ArrayList<User> list = um.getUsers();
+        User gustaf = new User("Gurra", "Gustaf", "Holmström");
 
-        for (int i=0; i<list.size(); i++) {
-            System.out.println("ID's: " + list.get(i).getId());
-        }
+        um.createUser(gustaf);
     }
 
 }
