@@ -2,6 +2,7 @@ import Model.ManageDataObj.UserManage;
 import Model.Entitys.*;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
 /**
  * Created by Gurris on 2016-10-02.
@@ -11,14 +12,12 @@ public class App {
     public static void main(String[] args){
 
         UserManage um = new UserManage();
-        User u = um.getUserById(2);
-        System.out.println("id: " + u.getId());
-        System.out.println("username: " + u.getUsername());
-        System.out.println("Firstnaem: " + u.getFirstname());
-        System.out.println("Lastname: " + u.getLastname());
 
+        ArrayList<User> list = um.getUsers();
 
-
+        for (int i=0; i<list.size(); i++) {
+            System.out.println("ID's: " + list.get(i).getId());
+        }
     }
 
 }

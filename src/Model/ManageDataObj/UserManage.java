@@ -4,6 +4,8 @@ import Model.DB.DBConnection;
 import Model.Entitys.User;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Gurris on 2016-10-02.
@@ -51,7 +53,6 @@ public class UserManage {
             conn = DBConnection.getConnection();
             stmt = conn.prepareStatement("SELECT * from user where Id = ?;");
             stmt.setInt(1, id);
-
             rs = stmt.executeQuery();
 
             while(rs.next()) {
@@ -91,10 +92,112 @@ public class UserManage {
     }
 
     public void deleteUser(int id){
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        try {
+            conn = DBConnection.getConnection();
+            stmt = conn.prepareStatement("DELETE from user where Id = ?;");
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if(stmt != null){
+                try {
+                    stmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(conn != null){
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
 
     }
 
-    public void updateUser(int id, String username, String firstName, String lastName){
+    public void updateUser(User u){
+        User user = u;
+        Connection conn = null;
+        PreparedStatement stmt = null;
+
+        try{
+            conn = DBConnection.getConnection();
+            stmt = conn.prepareStatement("update user set Username=?, Firstname=?, Lastname=? where Id =?;");
+            stmt.setString(1, u.getUsername());
+            stmt.setString(2, u.getFirstname());
+            stmt.setString(3, u.getLastname());
+            stmt.setInt(4, u.getId());
+            stmt.executeUpdate();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if(stmt != null){
+                try {
+                    stmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(conn != null){
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
 
     }
+
+    public ArrayList<User> getUsers(){
+        ResultSet rs = null;
+        ArrayList<User> list = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement stmt = null;
+
+        try{
+
+            conn = DBConnection.getConnection();
+            stmt = conn.prepareStatement("SELECT * FROM user");
+            rs = stmt.executeQuery();
+
+            while(rs.next()){
+                User u = new User();
+                u.setId(rs.getInt("Id"));
+                u.setUsername(rs.getString("Username"));
+                u.setFirstname(rs.getString("Firstname"));
+                u.setLastname(rs.getString("Lastname"));
+                list.add(u);
+            }
+            return list;
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }finally {
+            if(conn != null){
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(stmt != null){
+                try {
+                    stmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+
+    }
+
 }
