@@ -17,6 +17,8 @@ public class userController extends  HttpServlet{
             throws ServletException, IOException {
 
         response.getWriter().write("<html><body>GET response</body></html>");
+
+        //test
     }
 
 }
