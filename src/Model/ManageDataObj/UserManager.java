@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public class UserManager {
 
-    public void createUser(User user){
+    public void createUser(User user){// get from DB
         Connection conn = null;
         PreparedStatement stmt = null;
         try{
@@ -42,7 +42,7 @@ public class UserManager {
         }
     }
 
-    public User getUserById(int id){
+    public User getUserById(int id){// get from DB
         User user = new User();
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -89,7 +89,7 @@ public class UserManager {
 
     }
 
-    public boolean AuthenticateUser(String Username, String Password){
+    public boolean AuthenticateUser(String Username, String Password){// get from DB
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -134,7 +134,7 @@ public class UserManager {
 
     }
 
-    public void deleteUser(int id){
+    public void deleteUser(int id){// get from DB
         Connection conn = null;
         PreparedStatement stmt = null;
         try {
@@ -164,7 +164,7 @@ public class UserManager {
 
     }
 
-    public void updateUser(User u){
+    public void updateUser(User u){// get from DB
         User user = u;
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -199,7 +199,7 @@ public class UserManager {
 
     }
 
-    public ArrayList<User> getUsers(){
+    public ArrayList<User> getUsers(){// get from DB
         ResultSet rs = null;
         ArrayList<User> list = new ArrayList<>();
         Connection conn = null;

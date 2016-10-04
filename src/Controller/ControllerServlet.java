@@ -39,26 +39,23 @@ public class ControllerServlet extends  HttpServlet{
                     break;
                 case "2": // get product from DB(so it is correct). And add to shopping cart!
                     ProductController PC = new ProductController();
-                    int P_id =  Integer.parseInt(request.getParameter("P_id"));
-
+                    int P_id = Integer.parseInt(request.getParameter("P_id"));
                     Product p = new Product();
                     p = PC.getProductById(P_id);
 
                     ArrayList<Product> P_list = new ArrayList<>();
-                    P_list = (ArrayList<Product>)request.getSession().getAttribute("CART");
-                    P_list.add(p); // if not null or something like that!
-
-                    request.getSession().setAttribute("CART", P_list);
-                    System.out.println("-----------");
-                    for(int i=0; i<P_list.size(); i++){
-                        System.out.println(P_list.get(i).getName());
+                    ArrayList<Product> tmp =  (ArrayList<Product>)request.getSession().getAttribute("CART"); //current cart
+                    if(tmp != null){ // Verification so it is not null
+                        P_list = tmp;
                     }
-                    System.out.println("-----------");
+                    if(p != null){
+                        P_list.add(p);
+                    }
 
-                    break;
-                case "3":
-                    break;
-                case "4":
+                    request.getSession().setAttribute("CART", P_list); // Add's the product to the cart
+
+                    request.getRequestDispatcher("Browse.jsp").forward(request, response);
+
                     break;
                 default:
                     System.out.println("Could not find action");
@@ -71,11 +68,6 @@ public class ControllerServlet extends  HttpServlet{
     public void doPost( HttpServletRequest request,
                        HttpServletResponse response)
             throws ServletException, IOException {
-
-        System.out.println(request.getParameter("controllerInput"));
-        System.out.println("Post");
-
-        //response.getWriter().write("<html><body>Welcome to the shop</body></html>");
 
     }
 }

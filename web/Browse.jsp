@@ -15,15 +15,6 @@
     list = PM.getProducts();
 %>
 
-<%
-    ArrayList<Product> Sesslist = new ArrayList<>();
-    Sesslist.add(new Product(1, "första", 33));
-    Sesslist.add(new Product(2, "andra", 44));
-    Sesslist.add(new Product(3, "tredje", 55));
-    System.out.println("HERE::::: " + Sesslist.size());
-    session.setAttribute("CART", Sesslist);
-%>
-
 <html>
 <head>
     <title>Browse</title>

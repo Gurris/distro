@@ -6,14 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@page import="Model.ManageDataObj.UserManager"%>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="Model.Entitys.*" %>
-<%
-  ArrayList<User> list = new ArrayList<User>();
-  UserManager um = new UserManager();
-  list = um.getUsers();
-%>
+
 <html>
 <head>
   <title>Web shop!</title>
@@ -22,7 +15,6 @@
 <body>
 <h1>Welcome to the web shop!</h1>
 <p>Feel free to browse around!</p>
-
 
 <% if(session.getAttribute("LoginStatus") == "Login success"){%>
     <p>Welcome <%=session.getAttribute("Username")%></p>

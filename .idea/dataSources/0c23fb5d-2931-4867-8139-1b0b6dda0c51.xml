@@ -75,7 +75,7 @@
       <mandatory>1</mandatory>
       <data-type>varchar(50)|0</data-type>
     </column>
-    <column id="25" parent="9" name="p_price">
+    <column id="25" parent="9" name="P_price">
       <mandatory>1</mandatory>
       <data-type>int(11)|0</data-type>
     </column>

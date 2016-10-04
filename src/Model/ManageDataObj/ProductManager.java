@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class ProductManager {
 
-    public void createProduct(Product prod){
+    public void createProduct(Product prod){ // get from DB
         Connection conn = null;
         PreparedStatement stmt = null;
         try{
@@ -47,7 +47,7 @@ public class ProductManager {
     }
 
 
-    public Product getProductByName(String name){
+    public Product getProductByName(String name){// get from DB
         Product p = new Product();
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -93,7 +93,7 @@ public class ProductManager {
 
     }
 
-    public Product getProductById(int id){
+    public Product getProductById(int id){// get from DB
         Product p = new Product();
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -140,7 +140,7 @@ public class ProductManager {
     }
 
 
-    public ArrayList<Product> getProducts(){
+    public ArrayList<Product> getProducts(){// get from DB
         ResultSet rs = null;
         ArrayList<Product> list = new ArrayList<>();
         Connection conn = null;
