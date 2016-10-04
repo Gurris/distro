@@ -52,5 +52,11 @@
     <%}%>
 </Table>
 
+<p style="padding: 0.15em"></p>
+
+<form action="index.jsp">
+    <input type="submit" value="Return" />
+</form>
+
 </body>
 </html>

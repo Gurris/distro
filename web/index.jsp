@@ -24,26 +24,19 @@
 <p>Feel free to browse around!</p>
 
 
-<%
-if(session.getAttribute("Username") != null){%>
+<% if(session.getAttribute("LoginStatus") == "Login success"){%>
     <p>Welcome <%=session.getAttribute("Username")%></p>
-<%}else {%>
-    <p>You are not logged in!</p>
+<%}else if(session.getAttribute("LoginStatus") == "Login failed"){%>
+    <p>Login failed</p>
+<%} else {%>
+    <p>You are not logged in</p>
 <%}%>
 
 <ul>
-  <li><a href="Login.jsp">Login!</a></li>
+  <li><a href="Login.jsp">Login</a></li>
   <li><a href="Browse.jsp">Browse</a></li>
   <li><a href="ShoppingCart.jsp">Shopping cart</a></li>
 </ul>
-
-
-<form action = "ControllerServlet" method="post">
-  <input type = "text" name="controllerInput" value=""/>
-</form>
-
-
-
 
 </body>
 </html>

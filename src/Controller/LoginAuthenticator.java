@@ -13,7 +13,6 @@ public class LoginAuthenticator {
     public LoginAuthenticator(String Username, String Password){
         this.Username = Username;
         this.Password = Password;
-
     }
 
     public boolean isAuthentic(){
@@ -23,7 +22,4 @@ public class LoginAuthenticator {
         }
         return false;
     }
-
-
-
 }

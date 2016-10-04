@@ -14,5 +14,14 @@
 
 <h1>Your shopping cart</h1>
 
+
+
+<p style="padding: 0.15em"></p>
+
+<form action="index.jsp">
+    <input type="submit" value="Return" />
+</form>
+
+
 </body>
 </html>

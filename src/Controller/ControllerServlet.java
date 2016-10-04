@@ -3,6 +3,7 @@ package Controller;
 import Model.Entitys.Product;
 import com.sun.org.apache.xpath.internal.SourceTree;
 
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,11 +28,13 @@ public class ControllerServlet extends  HttpServlet{
                 case "1": // Login
                     LoginAuthenticator LA = new LoginAuthenticator(request.getParameter("Username"), request.getParameter("Password"));
                     if(LA.isAuthentic()){
+                        request.getSession().setAttribute("LoginStatus", "Login success");
                         request.getSession().setAttribute("Username", request.getParameter("Username"));
                         request.getRequestDispatcher("index.jsp").forward(request, response);
                     }else{
-                        System.out.println("Login failed");
-                        //BACK BUTTON
+
+                        request.getSession().setAttribute("LoginStatus", "Login failed");
+                        request.getRequestDispatcher("index.jsp").forward(request, response);
                     }
                     break;
                 case "2": // get product from DB(so it is correct). And add to shopping cart!

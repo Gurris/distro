@@ -19,11 +19,20 @@ if(session.getAttribute("Username") != null){%>
     <p>You are already logged in!<br/>Enter new credentials to change user</p>
 <%}%>
 
+<%
+
+%>
 <form action="ControllerServlet" method="get">
     <input type="hidden" name="controllerInput" value="1">
     <br/>Username:<input type="text" name="Username">
     <br/>Password:<input type="password" name="Password">
     <br/><input type="submit" value="Submit">
+</form>
+
+<p style="padding: 0.15em"></p>
+
+<form action="index.jsp">
+    <input type="submit" value="Cancel" />
 </form>
 
 
