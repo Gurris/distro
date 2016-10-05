@@ -1,8 +1,5 @@
-import Model.ManageDataObj.ProductManager;
-import Model.ManageDataObj.UserManager;
+import Model.DBM.UserManager;
 import Model.Entitys.*;
-
-import java.util.ArrayList;
 
 /**
  * Created by Gurris on 2016-10-02.
@@ -15,9 +12,15 @@ public class App {
         //UserManager um = new UserManager();
         //list = um.getUsers();
 
-        Product p = new Product("Ketchup", 50);
-        ProductManager pm = new ProductManager();
-        pm.createProduct(p);
+        User u = new User("Snurris", "Gustaf", "Holmström", "123");
+        UserManager um = new UserManager();
+        um.createUser(u);
+
+
+
+        //Product p = new Product("Korv", 67);
+        //ProductManager pm = new ProductManager();
+        //pm.createProduct(p);
 
 
     }
